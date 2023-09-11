@@ -3,6 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			message: null,
             prueba: 15,
+			currentMenuItem: 0,
 			demo: [
 				{
 					title: "FIRST",
@@ -37,7 +38,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
-
 				//we have to loop the entire demo array to look for the respective index
 				//and change its color
 				const demo = store.demo.map((elm, i) => {
@@ -47,7 +47,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
-			}
+			},
+			handleClick: (e) => {
+				const datos=e.key
+				console.log("entro en el actions y la variable es"+e)
+				setStore({currentMenuItem: datos});
+			  },
 		}
 	};
 };
